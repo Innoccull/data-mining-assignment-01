@@ -141,10 +141,11 @@ print(sum(knn30MSE))
 print(sum(knn50MSE))
 print(sum(knn100MSE))
 ```
+**3(a)**
 
-**(b)** The best performing K was 20. This is evidence by it having the lowest MSE and is likely because this value strikes the best balance between bias and variance in the model.
+**3(b)** The best performing K was 20. This is evidence by it having the lowest MSE and is likely because this value strikes the best balance between bias and variance in the model.
 
-**(c)** Plot of training data, test data and the best kNN model.
+**3(c)** Plot of training data, test data and the best kNN model.
 
 ```{r plotting}
 par(mfrow=c(1,3))
@@ -155,7 +156,7 @@ plot(test$mpg, test$horsepower, main="Test")
 
 plot(test$mpg, knn20, main="kNN20 Prediction")
 ```
-**(d)** 
+**3(d)** 
 Bias and variance are two competing properties of statistical learning methods. Variance refers to the amount a model will change if we had different training data. Bias refers to the error we introduce by approximating real world complexity into a simpler model. In general, the more flexible a model is the more variance we will have but we will have less bias (and vice-versa for less flexible models).
 
 In the case of kNN. 
