@@ -1,0 +1,406 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Assignment 1},
+  pdfauthor={Chris Rodgers},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Assignment 1}
+\author{Chris Rodgers}
+\date{07/03/2021}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{echo =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"\textasciitilde{}/Data Mining}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{data{-}mining{-}assignment{-}01"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{assignment-1}{%
+\subsection{Assignment 1}\label{assignment-1}}
+
+\textbf{Name:} Chris Rodgers \textbf{Student} ID: 81011955
+
+\hypertarget{question-1}{%
+\subsubsection{Question 1}\label{question-1}}
+
+Describe one advantage and one disadvantage of flexible (versus a less
+flexible) approaches for regression. Under what conditions might a less
+flexible approach be preferred?
+
+\textbf{Advantage:} Flexible models allow for more parameters that can
+more accurately reflect the true nature of f.
+
+\textbf{Disadvantage:} Flexible models can overfit the data. This means
+that the model can follow the errors in our taining data and as a
+consequence not reflect the true nature of f.
+
+\textbf{Conditions to prefer a less flexible approach:} We might prefer
+a less flexible approach when we are mainly interested in inference
+where the less flexible model will be easier to interpret. It is much
+easier to understand the link between X and Y when the model is less
+flexible. This is not the case with less flexible models which are
+harder to interpret.
+
+\hypertarget{question-2}{%
+\subsubsection{Question 2}\label{question-2}}
+
+\hypertarget{question-3}{%
+\subsubsection{Question 3}\label{question-3}}
+
+In this question, you will fit kNN regression models to the Auto data
+set to predict Y = mpg using X = horsepower. This data has been divided
+into training and testing sets: AutoTrain.csv and AutoTest.csv (download
+these sets from Learn). The kNN() R function on Learn should be used to
+answer this question (you need to run the kNN code before calling the
+function). (a) Perform kNN regression with k = 2, 5, 10, 20, 30, 50 and
+100, (learning from the training data) and compute the training and
+testing MSE for each value of k. (b) Which value of k performed best?
+Explain. (c) Plot the training data, testing data and the best kNN model
+in the same figure. (The points() function is useful to plot the kNN
+model because it is discontinuous.) (d) Describe the bias-variance
+trade-off for kNN regression
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# STAT318/462 kNN regression function}
+
+\NormalTok{kNN }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(k,x.train,y.train,x.pred) \{}
+\CommentTok{\# }
+\DocumentationTok{\#\# This is kNN regression function for problems with}
+\DocumentationTok{\#\# 1 predictor}
+\CommentTok{\#}
+\DocumentationTok{\#\# INPUTS}
+\CommentTok{\#}
+\CommentTok{\# k       = number of observations in nieghbourhood }
+\CommentTok{\# x.train = vector of training predictor values}
+\CommentTok{\# y.train = vector of training response values}
+\CommentTok{\# x.pred  = vector of predictor inputs with unknown}
+\CommentTok{\#           response values }
+\CommentTok{\#}
+\DocumentationTok{\#\# OUTPUT}
+\CommentTok{\#}
+\CommentTok{\# y.pred  = predicted response values for x.pred}
+
+\DocumentationTok{\#\# Initialize:}
+\NormalTok{n.pred }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(x.pred);       y.pred }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(n.pred)}
+
+\DocumentationTok{\#\# Main Loop}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{n.pred)\{}
+\NormalTok{  d }\OtherTok{\textless{}{-}} \FunctionTok{abs}\NormalTok{(x.train }\SpecialCharTok{{-}}\NormalTok{ x.pred[i])}
+\NormalTok{  dstar }\OtherTok{=}\NormalTok{ d[}\FunctionTok{order}\NormalTok{(d)[k]]}
+\NormalTok{  y.pred[i] }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(y.train[d }\SpecialCharTok{\textless{}=}\NormalTok{ dstar])        }
+\NormalTok{\}}
+\DocumentationTok{\#\# Return the vector of predictions}
+\FunctionTok{invisible}\NormalTok{(y.pred)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{train }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"\textasciitilde{}/Data Mining/data{-}mining{-}assignment{-}01/AutoTrain.csv"}\NormalTok{)}
+\NormalTok{test }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"\textasciitilde{}/Data Mining/data{-}mining{-}assignment{-}01/AutoTest.csv"}\NormalTok{)}
+
+\NormalTok{knn2 }\OtherTok{=} \FunctionTok{kNN}\NormalTok{(}\DecValTok{2}\NormalTok{, train}\SpecialCharTok{$}\NormalTok{horsepower, train}\SpecialCharTok{$}\NormalTok{mpg, test}\SpecialCharTok{$}\NormalTok{horsepower)}
+\NormalTok{knn5 }\OtherTok{=} \FunctionTok{kNN}\NormalTok{(}\DecValTok{5}\NormalTok{, train}\SpecialCharTok{$}\NormalTok{horsepower, train}\SpecialCharTok{$}\NormalTok{mpg, test}\SpecialCharTok{$}\NormalTok{horsepower)}
+\NormalTok{knn10 }\OtherTok{=} \FunctionTok{kNN}\NormalTok{(}\DecValTok{10}\NormalTok{, train}\SpecialCharTok{$}\NormalTok{horsepower, train}\SpecialCharTok{$}\NormalTok{mpg, test}\SpecialCharTok{$}\NormalTok{horsepower)}
+\NormalTok{knn20 }\OtherTok{=} \FunctionTok{kNN}\NormalTok{(}\DecValTok{20}\NormalTok{, train}\SpecialCharTok{$}\NormalTok{horsepower, train}\SpecialCharTok{$}\NormalTok{mpg, test}\SpecialCharTok{$}\NormalTok{horsepower)}
+\NormalTok{knn30 }\OtherTok{=} \FunctionTok{kNN}\NormalTok{(}\DecValTok{30}\NormalTok{, train}\SpecialCharTok{$}\NormalTok{horsepower, train}\SpecialCharTok{$}\NormalTok{mpg, test}\SpecialCharTok{$}\NormalTok{horsepower)}
+\NormalTok{knn50 }\OtherTok{=} \FunctionTok{kNN}\NormalTok{(}\DecValTok{50}\NormalTok{, train}\SpecialCharTok{$}\NormalTok{horsepower, train}\SpecialCharTok{$}\NormalTok{mpg, test}\SpecialCharTok{$}\NormalTok{horsepower)}
+\NormalTok{knn100 }\OtherTok{=} \FunctionTok{kNN}\NormalTok{(}\DecValTok{100}\NormalTok{, train}\SpecialCharTok{$}\NormalTok{horsepower, train}\SpecialCharTok{$}\NormalTok{mpg, test}\SpecialCharTok{$}\NormalTok{horsepower)}
+
+\NormalTok{knn2train }\OtherTok{=} \FunctionTok{kNN}\NormalTok{(}\DecValTok{2}\NormalTok{, train}\SpecialCharTok{$}\NormalTok{horsepower, train}\SpecialCharTok{$}\NormalTok{mpg, train}\SpecialCharTok{$}\NormalTok{horsepower)}
+\NormalTok{knn5train }\OtherTok{=} \FunctionTok{kNN}\NormalTok{(}\DecValTok{5}\NormalTok{, train}\SpecialCharTok{$}\NormalTok{horsepower, train}\SpecialCharTok{$}\NormalTok{mpg, train}\SpecialCharTok{$}\NormalTok{horsepower)}
+\NormalTok{knn10train }\OtherTok{=} \FunctionTok{kNN}\NormalTok{(}\DecValTok{10}\NormalTok{, train}\SpecialCharTok{$}\NormalTok{horsepower, train}\SpecialCharTok{$}\NormalTok{mpg, train}\SpecialCharTok{$}\NormalTok{horsepower)}
+\NormalTok{knn20train }\OtherTok{=} \FunctionTok{kNN}\NormalTok{(}\DecValTok{20}\NormalTok{, train}\SpecialCharTok{$}\NormalTok{horsepower, train}\SpecialCharTok{$}\NormalTok{mpg, train}\SpecialCharTok{$}\NormalTok{horsepower)}
+\NormalTok{knn30train }\OtherTok{=} \FunctionTok{kNN}\NormalTok{(}\DecValTok{30}\NormalTok{, train}\SpecialCharTok{$}\NormalTok{horsepower, train}\SpecialCharTok{$}\NormalTok{mpg, train}\SpecialCharTok{$}\NormalTok{horsepower)}
+\NormalTok{knn50train }\OtherTok{=} \FunctionTok{kNN}\NormalTok{(}\DecValTok{50}\NormalTok{, train}\SpecialCharTok{$}\NormalTok{horsepower, train}\SpecialCharTok{$}\NormalTok{mpg, train}\SpecialCharTok{$}\NormalTok{horsepower)}
+\NormalTok{knn100train }\OtherTok{=} \FunctionTok{kNN}\NormalTok{(}\DecValTok{100}\NormalTok{, train}\SpecialCharTok{$}\NormalTok{horsepower, train}\SpecialCharTok{$}\NormalTok{mpg, train}\SpecialCharTok{$}\NormalTok{horsepower)}
+
+
+\NormalTok{knn2MSE }\OtherTok{=}\NormalTok{ (test}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{{-}}\NormalTok{ knn2)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{knn5MSE }\OtherTok{=}\NormalTok{ (test}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{{-}}\NormalTok{ knn5)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{knn10MSE }\OtherTok{=}\NormalTok{ (test}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{{-}}\NormalTok{ knn10)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{knn20MSE }\OtherTok{=}\NormalTok{ (test}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{{-}}\NormalTok{ knn20)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{knn30MSE }\OtherTok{=}\NormalTok{ (test}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{{-}}\NormalTok{ knn30)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{knn50MSE }\OtherTok{=}\NormalTok{ (test}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{{-}}\NormalTok{ knn50)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{knn100MSE }\OtherTok{=}\NormalTok{ (test}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{{-}}\NormalTok{ knn100)}\SpecialCharTok{\^{}}\DecValTok{2}
+
+\NormalTok{knn2MSEtrain }\OtherTok{=}\NormalTok{ (test}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{{-}}\NormalTok{ knn2train)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{knn5MSEtrain }\OtherTok{=}\NormalTok{ (test}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{{-}}\NormalTok{ knn5train)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{knn10MSEtrain }\OtherTok{=}\NormalTok{ (test}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{{-}}\NormalTok{ knn10train)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{knn20MSEtrain }\OtherTok{=}\NormalTok{ (test}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{{-}}\NormalTok{ knn20train)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{knn30MSEtrain }\OtherTok{=}\NormalTok{ (test}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{{-}}\NormalTok{ knn30train)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{knn50MSEtrain }\OtherTok{=}\NormalTok{ (test}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{{-}}\NormalTok{ knn50train)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{knn100MSEtrain }\OtherTok{=}\NormalTok{ (test}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{{-}}\NormalTok{ knn100train)}\SpecialCharTok{\^{}}\DecValTok{2}
+
+
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(knn2MSEtrain))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 22561.57
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(knn5MSEtrain))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 22221.57
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(knn10MSEtrain))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 22260.9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(knn20MSEtrain))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 21897.52
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(knn30MSEtrain))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 21182.39
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(knn50MSEtrain))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 19841.95
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(knn100MSEtrain))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 15876.68
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(knn2MSE))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4481.244
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(knn5MSE))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3834.391
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(knn10MSE))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3651.312
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(knn20MSE))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3394.442
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(knn30MSE))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3514.315
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(knn50MSE))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3836.452
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(knn100MSE))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5157.823
+\end{verbatim}
+
+\textbf{(b)} The best performing K was 20. This is evidence by it having
+the lowest MSE and is likely because this value strikes the best balance
+between bias and variance in the model.
+
+\textbf{(c)} Plot of training data, test data and the best kNN model.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+
+\FunctionTok{plot}\NormalTok{(train}\SpecialCharTok{$}\NormalTok{mpg, train}\SpecialCharTok{$}\NormalTok{horsepower, }\AttributeTok{main=}\StringTok{"Train"}\NormalTok{)}
+
+\FunctionTok{plot}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{mpg, test}\SpecialCharTok{$}\NormalTok{horsepower, }\AttributeTok{main=}\StringTok{"Test"}\NormalTok{)}
+
+\FunctionTok{plot}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{mpg, knn20, }\AttributeTok{main=}\StringTok{"kNN20 Prediction"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment1_files/figure-latex/plotting-1.pdf}
+\textbf{(d)} Bias and variance are two competing properties of
+statistical learning methods. Variance refers to the amount a model will
+change if we had different training data. Bias refers to the error we
+introduce by approximating real world complexity into a simpler model.
+In general, the more flexible a model is the more variance we will have
+but we will have less bias (and vice-versa for less flexible models).
+
+In the case of kNN.
+
+\end{document}
