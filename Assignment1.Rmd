@@ -162,5 +162,40 @@ Bias and variance are two competing properties of statistical learning methods. 
 In the case of kNN. 
 
 
+```{r plotting}
+x = seq(-4,5,length=100)
+plot(x,
+	0.69*dnorm(x,0,1),
+	pch=21,
+	col="blue",
+	cex=0.6,
+	lwd = 4,
+	type="l",
+	xlab = "x",
+	ylab = "pi_k*f_k",
+	main = "Conditional densities multiplied by prior probabilities")
+points(x,
+	0.31*dnorm(x,1,0.5),
+	pch=21,
+	col="red",
+	cex=0.6,
+	lwd = 4,
+	type="l")
+legend("topright",
+	legend = c("Class 0", "Class 1"),
+	col = c("blue","red"),
+	lwd = 4,
+	text.col = "black",
+	horiz = FALSE)
+
+points(c(.75,0.75),
+	c(-0.1,0.3),
+	lwd = 8,
+	col = "black",
+	type="l")
+
+
+```
+
 
 
