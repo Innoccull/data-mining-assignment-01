@@ -36,6 +36,55 @@ We might prefer a less flexible approach when we are mainly interested in infere
 
 ### Question 2
 
+**2a**
+```{r plotting}
+x = seq(-4,5,length=100)
+plot(x,
+	0.69*dnorm(x, 0, 1),
+	pch=21,
+	col="blue",
+	cex=0.6,
+	lwd = 4,
+	type="l",
+	xlab = "x",
+	ylab = "pi_k*f_k",
+	main = "Conditional densities multiplied by prior probabilities")
+points(x,
+	0.31*dnorm(x, 1, 1),
+	pch=21,
+	col="red",
+	cex=0.6,
+	lwd = 4,
+	type="l")
+legend("topright",
+	legend = c("Class 0", "Class 1"),
+	col = c("blue","red"),
+	lwd = 4,
+	text.col = "black",
+	horiz = FALSE)
+
+points(c(1.3,1.3),
+	c(-0.1,0.3),
+	lwd = 1,
+	col = "black",
+	type="l")
+```
+
+**2(b)**
+``` {r bayes decision boundary}
+log(0.7/0.30) + 0.5
+```
+1.30
+
+**2(c)**
+X = 3 will be predicted as class 1. This is because X=3 is to the right of the Bayes decision boundary in the diagram above. The Bayes Classifier tells us to predict the class with the highest probability.
+
+**2(d)**
+Probability X=2 is class 1?
+
+P(Y=1|X=2)
+
+Y=1 is 0.31
 
 
 
@@ -160,42 +209,6 @@ plot(test$mpg, knn20, main="kNN20 Prediction")
 Bias and variance are two competing properties of statistical learning methods. Variance refers to the amount a model will change if we had different training data. Bias refers to the error we introduce by approximating real world complexity into a simpler model. In general, the more flexible a model is the more variance we will have but we will have less bias (and vice-versa for less flexible models).
 
 In the case of kNN. 
-
-
-```{r plotting}
-x = seq(-4,5,length=100)
-plot(x,
-	0.69*dnorm(x,0,1),
-	pch=21,
-	col="blue",
-	cex=0.6,
-	lwd = 4,
-	type="l",
-	xlab = "x",
-	ylab = "pi_k*f_k",
-	main = "Conditional densities multiplied by prior probabilities")
-points(x,
-	0.31*dnorm(x,1,0.5),
-	pch=21,
-	col="red",
-	cex=0.6,
-	lwd = 4,
-	type="l")
-legend("topright",
-	legend = c("Class 0", "Class 1"),
-	col = c("blue","red"),
-	lwd = 4,
-	text.col = "black",
-	horiz = FALSE)
-
-points(c(.75,0.75),
-	c(-0.1,0.3),
-	lwd = 8,
-	col = "black",
-	type="l")
-
-
-```
 
 
 
