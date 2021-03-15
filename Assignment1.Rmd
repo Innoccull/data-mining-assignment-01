@@ -10,6 +10,7 @@ output:
 ```{r setup, echo=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 setwd("~/Data Mining\\data-mining-assignment-01")
+library(knitr)
 ```
 
 ## Assignment 1
@@ -23,11 +24,11 @@ Describe one advantage and one disadvantage of flexible (versus a less
 flexible) approaches for regression. Under what conditions might a less flexible approach be preferred?
 
 **Advantage:**
-Flexible models allow for more parameters that can more accurately reflect the true nature of f.
+Flexible models allow for more parameters that can more accurately reflect the true nature of f. This can lead to more accurate models.
 
 
 **Disadvantage:**
-Flexible models can overfit the data. This means that the model can follow the errors in our taining data and as a consequence not reflect the true nature of f.
+Flexible models can overfit the data. This means that the model can follow the errors in our taining data and as a consequence not reflect the true nature of f. This can result in a model that does not perform well in the real world.
 
 
 **Conditions to prefer a less flexible approach:**
@@ -156,43 +157,26 @@ knn30train = kNN(30, train$horsepower, train$mpg, train$horsepower)
 knn50train = kNN(50, train$horsepower, train$mpg, train$horsepower)
 knn100train = kNN(100, train$horsepower, train$mpg, train$horsepower)
 
-
-knn2MSE = (test$mpg - knn2)^2
-knn5MSE = (test$mpg - knn5)^2
-knn10MSE = (test$mpg - knn10)^2
-knn20MSE = (test$mpg - knn20)^2
-knn30MSE = (test$mpg - knn30)^2
-knn50MSE = (test$mpg - knn50)^2
-knn100MSE = (test$mpg - knn100)^2
-
-knn2MSEtrain = (test$mpg - knn2train)^2
-knn5MSEtrain = (test$mpg - knn5train)^2
-knn10MSEtrain = (test$mpg - knn10train)^2
-knn20MSEtrain = (test$mpg - knn20train)^2
-knn30MSEtrain = (test$mpg - knn30train)^2
-knn50MSEtrain = (test$mpg - knn50train)^2
-knn100MSEtrain = (test$mpg - knn100train)^2
+trainMSE = c(mean((test$mpg - knn2train)^2), mean((test$mpg - knn5train)^2), mean((test$mpg - knn10train)^2), mean((test$mpg - knn20train)^2), mean((test$mpg - knn30train)^2), mean((test$mpg - knn50train)^2), mean((test$mpg - knn100train)^2))
 
 
-print(sum(knn2MSEtrain))
-print(sum(knn5MSEtrain))
-print(sum(knn10MSEtrain))
-print(sum(knn20MSEtrain))
-print(sum(knn30MSEtrain))
-print(sum(knn50MSEtrain))
-print(sum(knn100MSEtrain))
+testMSE = c(mean((test$mpg - knn2)^2), mean((test$mpg - knn5)^2), mean((test$mpg - knn10)^2), mean((test$mpg - knn20)^2), mean((test$mpg - knn30)^2), mean((test$mpg - knn50)^2), mean((test$mpg - knn100)^2))
 
-print(sum(knn2MSE))
-print(sum(knn5MSE))
-print(sum(knn10MSE))
-print(sum(knn20MSE))
-print(sum(knn30MSE))
-print(sum(knn50MSE))
-print(sum(knn100MSE))
+
+
+MSE = data.frame(c(2,5,10,20,30,50,100), trainMSE, testMSE)
+colnames(MSE) = c('k', 'train', 'test')
 ```
 **3(a)**
 
-**3(b)** The best performing K was 20. This is evidence by it having the lowest MSE and is likely because this value strikes the best balance between bias and variance in the model.
+```{r MSE table, echo=FALSE}
+
+kable(MSE)
+
+```
+
+
+**3(b)** The best performing K was 20. This is evidenced by it having the lowest MSE on the test data set. 20 likely performed best because this value strikes the best balance between bias and variance in the model.
 
 **3(c)** Plot of training data, test data and the best kNN model.
 
@@ -206,9 +190,17 @@ plot(test$mpg, test$horsepower, main="Test")
 plot(test$mpg, knn20, main="kNN20 Prediction")
 ```
 **3(d)** 
-Bias and variance are two competing properties of statistical learning methods. Variance refers to the amount a model will change if we had different training data. Bias refers to the error we introduce by approximating real world complexity into a simpler model. In general, the more flexible a model is the more variance we will have but we will have less bias (and vice-versa for less flexible models).
+Bias and variance are two competing properties of statistical learning methods. 
 
-In the case of kNN. 
+Variance refers to the amount a model will change if we had different training data. That is, the model will vary greatly should we have different training data. This is associated with more flexible models.
+
+Bias refers to the error we introduce by approximating real world complexity into a simpler model. This is associated with less flexible models.
+
+There is a trade-off between bias and variance because we cannot improve one without impacting the other. Increasing the complexity of our model (i.e. making it more flexible) will decrease bias because more complex models tend to better capture real world complexity, however it will increase variance because more complex models are more sensitive to changes in training data.
+
+
+In the case of kNN, lower values of k will produce more flexible models that have low bias but high variance. On the other hand, models  with larger values of k will be less flexible and have high bias but low variance.
+
 
 
 
